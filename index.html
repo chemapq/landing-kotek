@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kotek Virtual</title>
     
-    <!-- Adobe Fonts - Futura PT -->
+
     <link rel="stylesheet" href="https://use.typekit.net/gqr4zdt.css">
     
     <style>
@@ -28,7 +28,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000;
+            /* thumbnail while Vimeo player loads */
+            background-image: url('resources/img/thumbnail.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #FFF;
             z-index: 1;
         }
 
@@ -40,29 +45,30 @@
             height: 100svh;
             transform: translate(-50%, -50%);
             pointer-events: none;
+            background: transparent;
         }
 
-        /* Asegurar que el video cubra toda la pantalla en diferentes aspect ratios */
+        
         @media (min-aspect-ratio: 16/9) {
             .video-container iframe {
-                height: 56.25svw; /* 9/16 = 0.5625 */
+                height: 56.25svw; 
             }
         }
 
         @media (max-aspect-ratio: 16/9) {
             .video-container iframe {
-                width: 177.78svh; /* 16/9 = 1.778 */
+                width: 177.78svh; 
             }
         }
 
-        /* Máscara sobre el video */
+
         .video-mask {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('public/img/focus.png');
+            background-image: url('resources/img/focus.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -70,7 +76,7 @@
             pointer-events: none;
         }
 
-        /* Header y Navegación */
+
         header {
             position: fixed;
             top: 0;
@@ -101,7 +107,7 @@
             height: auto;
             width: 200px;
             display: block;
-            filter: brightness(0) invert(1);
+            
         }
 
         .nav-links {
@@ -138,7 +144,7 @@
             width: 100%;
         }
 
-        /* Botón especial de Contacto */
+
         .nav-links a:last-child {
             color: #000;
             background: #fff;
@@ -156,7 +162,7 @@
             background: rgba(97, 221, 215, 0.9);
         }
 
-        /* Texto inferior */
+
         .texto-intro {
             position: fixed;
             bottom: 50px;
@@ -180,7 +186,6 @@
             opacity: 0.7;
         }
 
-        /* Modales */
         .modal {
             position: fixed;
             top: -100%;
@@ -257,7 +262,35 @@
             text-align: center;
         }
 
-        /* Contacto - Layout dos columnas */
+        .modal-content h3 {
+            font-size: 33px;
+            line-height: 1.8;
+            font-weight: 500;
+            text-align: center;
+            margin: 0 0 1rem 0;
+            color: #fff;
+        }
+
+        .contacto-info h3 {
+            font-size: 18px; 
+            line-height: 1.8;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content h3 {
+                font-size: 18px; 
+                text-align: center;
+            }
+            .contacto-info h3 {
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+
+
         .contacto-wrapper {
             display: flex;
             gap: 4rem;
@@ -300,7 +333,16 @@
             display: none;
         }
 
-        /* Formulario de contacto */
+        /* Mostrar/ocultar versiones de servicios según viewport */
+        #servicios-desktop {
+            display: block;
+        }
+
+        #servicios-mobile {
+            display: none;
+        }
+
+
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -335,6 +377,15 @@
             min-height: 120px;
         }
 
+        @media (max-width: 768px) {
+            #servicios-desktop {
+                display: none;
+            }
+            #servicios-mobile {
+                display: block;
+            }
+        }
+
         .btn-submit {
             width: 100%;
             padding: 1rem 2rem;
@@ -364,7 +415,7 @@
             font-weight: 300;
         }
 
-        /* Responsive - Móvil */
+
         @media (max-width: 768px) {
             .modal {
                 padding-top: 2rem;
@@ -451,7 +502,7 @@
                 font-size: 1.2rem;
             }
 
-            /* Modal por encima del header en móvil */
+
             .modal {
                 z-index: 300;
             }
@@ -463,12 +514,11 @@
     </style>
 </head>
 <body>
-    <!-- Header con navegación -->
     <header>
         <nav>
             <div class="nav-brand">
                 <a href="index.html">
-                    <img src="public/img/logo_archimia_horizontal.svg" alt="Kotek Virtual">
+                    <img src="resources/img/logo-kotek.webp" alt="Kotek Virtual">
                 </a>
             </div>
             <div class="nav-links">
@@ -479,52 +529,65 @@
         </nav>
     </header>
     <div class="video-container">
+      
+
+
         <iframe 
-            src="https://player.vimeo.com/video/679100068?h=9e43e04c88&background=1&autoplay=1&loop=1&muted=1&controls=0" 
+            src="https://player.vimeo.com/video/1128472953?h=9e43e04c88&background=1&autoplay=1&loop=1&muted=1&controls=0" 
             frameborder="0" 
             allow="autoplay; fullscreen" 
             allowfullscreen>
         </iframe>
     </div>
     
-    <!-- Máscara sobre el video -->
+
     <div class="video-mask"></div>
 
-    <!-- Texto inferior -->
+
     <p class="texto-intro">
         Visita nuestra <a href="https://google.es" target="_blank">demo</a>
     </p>
 
-    <!-- Modal Nosotros -->
+
     <div class="modal" id="modal-nosotros">
         <button class="modal-close" data-close="nosotros">✕</button>
         <div class="modal-content">
             <h2>Kotek Virtual</h2>
-            <p>Kotek Virtual es un estudio especializado en comunicación Real Estate. Integrado por un equipo de arquitectos, diseñadores gráficos y profesionales de otras disciplinas artísticas, desarrolla proyectos de visualización arquitectónica, animación, arte, diseño y comunicación. Con la calidad y la innovación como premisas, y buscando siempre la excelencia, establece estrategias 360º y lleva a cabo todas las piezas necesarias para lograr la mejor campaña de comercialización y marketing.</p>
+            <p>
+                <br>
+                Especializados en visualización y digitalización de proyectos inmobiliarios aún sin contruir.
+                <br>
+                <br>
+Generamos todo el contenido visual necesario para comercializar obra nueva y centralizamos todo ese contenido en un herramineta interactiva, intuitiva y fácil de usar para el equipo comercial.</p>
         </div>
     </div>
 
-    <!-- Modal Servicios -->
+
     <div class="modal" id="modal-servicios">
         <button class="modal-close" data-close="servicios">✕</button>
         <div class="modal-content">
             <h2>Servicios</h2>
+            <h3>Generación de contenido visual</h3>
+            <p id="servicios-desktop"> 
+                Renders Hiperealistas &nbsp; · &nbsp; Tour Virtuales  &nbsp; · &nbsp; 
+                Animaciones <br> Fichas comerciales &nbsp; · &nbsp;
+                Branding &nbsp; · &nbsp; Dossier Comercial <br>
+                <br>
+            </p>
+            <p id="servicios-mobile"> 
+                Renders Hiperealistas &nbsp; · &nbsp; Tour Virtuales <br>
+                Animaciones &nbsp; · &nbsp; Fichas comerciales &nbsp; · &nbsp;
+                Branding <br> Dossier Comercial <br>
+                <br>
+            </p>
+            <h3>Desarrollo de Herramientas Comerciales</h3>
             <p>
-                    
-                CGIs &nbsp; · &nbsp; Animación  &nbsp; · &nbsp; 
-                Vídeo &nbsp; · &nbsp; Tracking &nbsp; · &nbsp; VR <br>
-                Showroom online &nbsp; · &nbsp; Diseño de producto <br>
-                Estrategia creativa y de Marca  &nbsp; · &nbsp; 
-                Diseño editorial y catálogos <br>
-                Creación de contenidos  &nbsp; · &nbsp; 
-                Diseño &amp; desarrollo web<br>
-                Diseño digital  &nbsp; · &nbsp; 
-                Packaging &nbsp; · &nbsp; Imprenta <br>
+                Desarrollamos herramientas visuales y sencillas para presentar el proyecto con mayor agilidad.
             </p>
         </div>
     </div>
 
-    <!-- Modal Contacto -->
+
     <div class="modal" id="modal-contacto">
         <button class="modal-close" data-close="contacto">✕</button>
         <div class="modal-content">
