@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada | Kotek Virtual</title>
+    <meta name="description" content="La página que buscas no existe. Vuelve a la página principal de Kotek Virtual.">
+    <meta name="robots" content="noindex, follow">
+    
+    <link rel="icon" type="image/x-icon" href="resources/img/favicon.ico">
+
+    <link rel="stylesheet" href="https://use.typekit.net/gqr4zdt.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: futura-pt, sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('resources/img/thumbnail.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #FFF;
+            z-index: 1;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100svw;
+            height: 100svh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            background: transparent;
+        }
+
+        
+        @media (min-aspect-ratio: 16/9) {
+            .video-container iframe {
+                height: 56.25svw; 
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .video-container iframe {
+                width: 177.78svh; 
+            }
+        }
+
+
+        .video-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('resources/img/focus.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 200;
+            padding: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0;
+            height: 43px;
+        }
+
+        .nav-brand a {
+            display: block;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-brand a:hover {
+            opacity: 0.7;
+        }
+
+        .nav-brand-text {
+            color: white;
+            text-align: left;
+        }
+
+        .brand-name {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3.5px;
+        }
+
+        .brand-tagline {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1;
+            margin: 4px 0 0 0;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 1;
+        }
+
+        .error-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .error-content h1 {
+            font-size: 120px;
+            font-weight: 700;
+            letter-spacing: 10px;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .error-content h2 {
+            font-size: 36px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .error-content p {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .btn-home:hover {
+            background: transparent;
+            color: white;
+        }
+
+
+        /* Tablet */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .brand-name {
+                font-size: 14px;
+                letter-spacing: 3px;
+            }
+
+            .brand-tagline {
+                font-size: 12px;
+                letter-spacing: 1.8px;
+            }
+
+            .error-content h1 {
+                font-size: 90px;
+                letter-spacing: 8px;
+            }
+
+            .error-content h2 {
+                font-size: 28px;
+                letter-spacing: 2.5px;
+            }
+
+            .error-content p {
+                font-size: 18px;
+            }
+
+            .btn-home {
+                font-size: 16px;
+                padding: 0.9rem 2.5rem;
+            }
+        }
+
+
+        /* Mobile */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .nav-brand-text {
+                text-align: center;
+            }
+
+            .brand-name {
+                font-size: 16px;
+                letter-spacing: 3.5px;
+            }
+
+            .brand-tagline {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+
+            .error-content {
+                padding: 1rem;
+                max-width: 90%;
+            }
+
+            .error-content h1 {
+                font-size: 64px;
+                letter-spacing: 6px;
+                margin-bottom: 0.75rem;
+            }
+
+            .error-content h2 {
+                font-size: 22px;
+                letter-spacing: 2px;
+                margin-bottom: 1rem;
+            }
+
+            .error-content p {
+                font-size: 16px;
+                margin-bottom: 2rem;
+                letter-spacing: 0.5px;
+            }
+
+            .btn-home {
+                font-size: 14px;
+                padding: 0.8rem 2rem;
+                letter-spacing: 1.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <a href="index.html">
+                    <div class="nav-brand-text">
+                        <div class="brand-name">Kotek Virtual</div>
+                        <div class="brand-tagline">Visual Real Estate</div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="video-container">
+        <iframe 
+            src="https://player.vimeo.com/video/1128783456?h=9e43e04c88&background=1&autoplay=1&loop=1&muted=1&controls=0" 
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <div class="video-mask"></div>
+
+    <div class="error-content">
+        <h1>404</h1>
+        <h2>Página no encontrada</h2>
+        <p>Lo sentimos, la página que buscas no existe o ha sido movida.</p>
+        <a href="index.html" class="btn-home">Volver al inicio</a>
+    </div>
+
+</body>
+</html>
